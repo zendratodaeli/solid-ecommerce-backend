@@ -5,6 +5,7 @@ const AddNewsPage = () => {
   return (
     <div>
       <AddNewsForm/>
+      
     </div>
   )
 }
