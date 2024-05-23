@@ -20,12 +20,7 @@ const News = ({ news }: NewsProps) => {
       >
           <p>{news.title}</p>
           <p>{news.content}</p>
-          <Image
-            src={news.imageUrl}
-            alt='image'
-            width={100}
-            height={100}
-            />
+          
       </div>
       <AddNewsForm
         open={showEditDialog}
