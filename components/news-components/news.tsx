@@ -1,17 +1,38 @@
+"use client"
+
 import { News as NewsModel } from '@prisma/client'
-import React from 'react'
+import Image from 'next/image'
+import React, { useState } from 'react'
+import AddNewsForm from './add-news-form'
 
 interface NewsProps {
   news: NewsModel
 }
 
 const News = ({ news }: NewsProps) => {
+  const [showEditDialog, setShowEditDialog] = useState(false);
   
   return (
-    <div className=' flex flex-col'>
-        <p>{news.title}</p>
-        <p>{news.content}</p>
-    </div>
+    <>
+      <div 
+        className=' flex flex-col'
+        onClick={() => setShowEditDialog(true)}
+      >
+          <p>{news.title}</p>
+          <p>{news.content}</p>
+          <Image
+            src={news.imageUrl}
+            alt='image'
+            width={100}
+            height={100}
+            />
+      </div>
+      <AddNewsForm
+        open={showEditDialog}
+        setOpen={setShowEditDialog}
+        newsToEdit={news}
+      />
+    </>
   )
 }
 
