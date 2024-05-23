@@ -14,15 +14,26 @@ export const MainNav = ({
   const routes = [
     {
       href: `/`,
-      label: 'Home',
+      label: 'Overview',
       active: pathname === `/`
     },
     {
-      href: `/add-news`,
-      label: 'Add News',
-      active: pathname === `/add-news`
+      href: `/billboards`,
+      label: 'Billboards',
+      active: pathname === `/billboards`
+    },
+    {
+      href: `/categories`,
+      label: 'Categories',
+      active: pathname === `/categories`
+    },
+    {
+      href: `/products`,
+      label: 'Products',
+      active: pathname === `/products`
     },
   ]
+
   return (
     <nav
       className={cn(" flex items-center space-x-4 lg:space-x-6", className)}

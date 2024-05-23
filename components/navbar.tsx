@@ -1,41 +1,23 @@
-"use client"
-
-import React, { useEffect, useState } from 'react'
-import { MainNav } from './main-nav'
 import { UserButton } from '@clerk/nextjs'
+import React, { ReactHTMLElement } from 'react'
+import { MainNav } from './main-nav'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 import { ThemeToggle } from './theme-toggle'
-import { Plus } from 'lucide-react'
-import { Button } from './ui/button'
-import AddNewsForm from './news-components/add-news-form'
+import { StoreIcon } from 'lucide-react'
 
-const Navbar = () => {
-  const [showAddEditNoteDialog, setShowAddEditNoteDialog] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  
-  useEffect(() => {
-    setMounted(true)
-  }, []);
+export default async function Navbar () {
 
-  if(!mounted) {
-    return null;
-  }
-  
   return (
-    <nav className=' border-b'>
+    <div className=' border-b'>
       <div className=' flex h-16 items-center px-4'>
-        <MainNav />
+        <StoreIcon/>
+        <MainNav className=' mx-6'/>
         <div className=' ml-auto flex items-center space-x-4'>
-          <Button onClick={() => setShowAddEditNoteDialog(true)}>
-            <Plus size={20} className="mr-2"/>
-            Add Note
-          </Button>
           <ThemeToggle />
-          <UserButton afterSignOutUrl='/'/>
+          <UserButton afterSignOutUrl='/sign-in'/>
         </div>
       </div>
-      <AddNewsForm open={showAddEditNoteDialog} setOpen={setShowAddEditNoteDialog} />
-    </nav>
+    </div>
   )
 }
-
-export default Navbar
