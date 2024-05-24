@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ModalProvider } from "@/providers/modal-provider";
 import { ToasterProvider } from "@/providers/toast-provider";
-import Navbar from "@/components/navbar";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Solid News",
-  description: "Finding some news on Solid News",
+  title: "Admin Dashboard",
+  description: "Admin Dashboard",
 };
 
 export default function RootLayout({
@@ -18,23 +18,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
+  
   return (
-    <html lang="en">
-      <ClerkProvider>
-        <body className={inter.className}>
-          <ThemeProvider
-            attribute="class" 
-            defaultTheme="light" 
-            disableTransitionOnChange
-            enableSystem
-          >
+    <ClerkProvider>
+      <html lang='en'>
+        <body>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <ToasterProvider/>
-            <Navbar />
+            <ModalProvider/>
             {children}
           </ThemeProvider>
         </body>
-      </ClerkProvider>
-    </html>
+      </html>
+    </ClerkProvider>
   );
 }
