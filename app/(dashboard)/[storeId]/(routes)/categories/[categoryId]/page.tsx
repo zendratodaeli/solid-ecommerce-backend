@@ -1,5 +1,4 @@
 import prismadb from '@/lib/prismadb'
-import BillboardForm from './components/category-form'
 import CategoryForm from './components/category-form'
 
 const CategoryPage = async ({
