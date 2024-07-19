@@ -11,7 +11,6 @@ export const MainNav = ({
   const pathname = usePathname();
   const params = useParams();
 
-  console.log(params.storeId)
 
   const routes = [
     {

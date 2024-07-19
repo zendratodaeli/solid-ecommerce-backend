@@ -4,9 +4,10 @@ import { NextResponse } from "next/server"
 
 export async function POST(req: Request, { params }: { params: {storeId: string}}) {
   try {
-    const { userId } = auth();
+    const { userId, getToken } = auth();
     const body = await req.json();
-
+    const token = await getToken();
+    console.log("get token",token)
     const { 
       name, 
       price, 
